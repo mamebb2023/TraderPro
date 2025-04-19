@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --color-blue: #0000ff;
+  --color-green: #00ff6a;
+
+  /* solana colors */
+  --color-purple-dino: #dc1fff;
+  --color-ocean-blue: #03e1ff;
+  --color-surge-green: #00ffa3;
+
+  /* solana colors dark */
+  --color-purple-dino-dark: #b51ad0;
+  --color-ocean-blue-dark: #00b2ca;
+  --color-surge-green-dark: #00c37c;
+}
+
+@theme {
+  --color-blue: var(--color-blue);
+  --color-green: var(--color-green);
+
+  /* solana colors */
+  --color-purple-dino: var(--color-purple-dino);
+  --color-ocean-blue: var(--color-ocean-blue);
+  --color-surge-green: var(--color-surge-green);
+
+  /* solana colors dark */
+  --color-purple-dino-dark: var(--color-purple-dino);
+  --color-ocean-blue-dark: var(--color-ocean-blue);
+  --color-surge-green-dark: var(--color-surge-green);
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+body {
+  color: white;
+  background: black;
+}
+
+.gradient-underline {
+  position: relative;
+}
+
+.gradient-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 3px;
+  border-radius: 5px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--color-purple-dino),
+    var(--color-ocean-blue),
+    var(--color-surge-green)
+  );
+}
+
+.on-hover-underline {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.on-hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 3px;
+  border-radius: 3px;
+  width: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-purple-dino),
+    var(--color-ocean-blue),
+    var(--color-surge-green)
+  );
+  transition: all 0.3s ease;
+}
+
+.on-hover-underline:hover:after {
+  width: 80%;
+}
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    var(--color-purple-dino) 0%,
+    var(--color-ocean-blue) 51%,
+    var(--color-surge-green) 100%
+  );
+}
+
+.btn-grad {
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  background-size: 200% auto;
+  border-radius: 5px;
+  display: block;
+}
+
+.btn-grad:hover {
+  box-shadow: 0 0 20px #eee;
+  background-position: right center;
+}

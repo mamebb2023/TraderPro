@@ -1,2 +1,3 @@
 # TrakerPro
-Wallet Tracker  | Track any wallet | Solana
+
+Wallet Tracker | Track any wallet | Solana
