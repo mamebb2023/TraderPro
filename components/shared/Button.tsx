@@ -9,10 +9,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({ children, className, disabled, ...props }: Props) => {
   return (
     <button
-      className={`flex-center gap-2 rounded-md ${className}
+      className={`py-2 px-5 font-bold flex-center gap-2 rounded-md ${className}
       ${
         disabled
-          ? "opacity-50 bg-gray-500 cursor-not-allowed hover:bg-gray-500"
+          ? "opacity-50 bg-gradient-to-r from-purple-dino via-ocean-blue to-surge-green cursor-not-allowed"
           : "cursor-pointer btn-grad"
       }`}
       disabled={disabled}
