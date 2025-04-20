@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  scroll-behavior: smooth;
   --color-blue: #0000ff;
   --color-green: #00ff6a;
 
@@ -10,9 +11,9 @@
   --color-surge-green: #00ffa3;
 
   /* solana colors dark */
-  --color-purple-dino-dark: #b51ad0;
-  --color-ocean-blue-dark: #00b2ca;
-  --color-surge-green-dark: #00c37c;
+  --color-purple-dino-dark: #87149b;
+  --color-ocean-blue-dark: #008a9d;
+  --color-surge-green-dark: #00965f;
 }
 
 @theme {
@@ -45,6 +46,29 @@ body {
   background: black;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  padding: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 0.3; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.9;
+}
+
+.bx {
+  font-size: 2em;
+}
+
 .gradient-underline {
   position: relative;
 }
@@ -75,7 +99,7 @@ body {
   position: absolute;
   left: 0;
   bottom: -3px;
-  height: 3px;
+  height: 5px;
   border-radius: 3px;
   width: 0;
   background: linear-gradient(
@@ -125,5 +149,3 @@ body {
     transform: rotate(360deg);
   }
 }
-
-

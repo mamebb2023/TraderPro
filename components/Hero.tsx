@@ -1,0 +1,188 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import Button from "./shared/Button";
+import { motion } from "framer-motion";
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.6,
+    },
+  },
+};
+
+const gradientVariants = {
+  hidden: { backgroundPosition: "0% 50%" },
+  visible: {
+    backgroundPosition: "100% 50%",
+    transition: {
+      duration: 8,
+      repeat: Infinity,
+      repeatType: "reverse" as "reverse",
+      ease: "linear",
+    },
+  },
+};
+
+const Hero = () => {
+  return (
+    <section className="relative overflow-hidden">
+      {/* Animated background elements */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32"
+      >
+        {/* Logo */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 w-24 h-24 flex items-center justify-center bg-gradient-to-br from-white/5 via-white/20 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-4"
+        >
+          <Image
+            src="/tp-logo-white.png"
+            alt="Solana Tracker Pro"
+            width={80}
+            height={80}
+            draggable={false}
+            className="hover:scale-105 transition-transform duration-300"
+          />
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h1
+          variants={itemVariants}
+          className="text-4xl md:text-6xl font-bold mb-4"
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
+            Track{" "}
+          </span>
+          <motion.span
+            variants={gradientVariants}
+            className="font-bold bg-clip-text text-transparent bg-[length:300%_100%] bg-gradient-to-r from-purple-dino via-ocean-blue to-surge-green"
+          >
+            SOLANA
+          </motion.span>{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
+            Wallets
+          </span>
+          <br />
+          <motion.span variants={itemVariants} className="text-purple-300">
+            Like A Pro Trader
+          </motion.span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8"
+        >
+          Monitor transactions, analyze portfolio performance, and get real-time
+          alerts for Solana wallets - all in one powerful dashboard.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row gap-4 mb-12"
+        >
+          <Button>
+            <Link href="/register">Start Tracking</Link>
+          </Button>
+          <Button variant="outline">
+            <Link href="/#features">See How It Works</Link>
+          </Button>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-center"
+        >
+          {[
+            { value: "10,000+", label: "Wallets Tracked" },
+            { value: "$250M+", label: "Assets Monitored" },
+            { value: "24/7", label: "Real-time Updates" },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              variants={itemVariants}
+              custom={index}
+              className="px-4"
+            >
+              <div className="text-3xl font-bold text-purple-400">
+                {stat.value}
+              </div>
+              <div className="text-gray-400">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Floating SOL coins animation */}
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        animate={{
+          y: [0, -20, 0],
+          opacity: [0.3, 0.6, 0.3],
+          transition: {
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+        className="absolute top-1/4 left-1/4 opacity-30"
+      >
+        <Image
+          src="/sol-icon.png"
+          draggable={false}
+          width={40}
+          height={40}
+          alt="SOL"
+        />
+      </motion.div>
+      <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        animate={{
+          y: [0, -15, 0],
+          opacity: [0.2, 0.5, 0.2],
+          transition: {
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          },
+        }}
+        className="absolute top-1/3 right-1/4 opacity-20"
+      >
+        <Image
+          src="/sol-icon.png"
+          draggable={false}
+          width={30}
+          height={30}
+          alt="SOL"
+        />
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;

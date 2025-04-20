@@ -60,11 +60,8 @@ const Page = () => {
         <p className="text-indigo-200 mb-2">Join our platform</p>
         <div className="text-xs bg-indigo-900/60 text-white p-3 rounded-lg w-full text-center mb-4">
           <i className="bx bx-info-circle"></i> Please register with the{" "}
-          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-dino via-ocean-blue to-surge-green">
-            SOLANA
-          </span>{" "}
-          wallet you can make purchases on, payments are verified based on your
-          wallet address
+          <b>SOLANA</b> wallet you can make purchases on, payments are verified
+          based on your wallet address
         </div>
       </div>
 
