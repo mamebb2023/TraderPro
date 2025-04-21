@@ -104,12 +104,12 @@ const Hero = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row gap-4 mb-12"
         >
-          <Button>
-            <Link href="/register">Start Tracking</Link>
-          </Button>
-          <Button variant="outline">
-            <Link href="/#features">See How It Works</Link>
-          </Button>
+          <Link href="/connect-wallet">
+            <Button>Start Tracking</Button>
+          </Link>
+          <Link href="/#features">
+            <Button variant="outline">See How It Works</Button>
+          </Link>
         </motion.div>
 
         {/* Stats */}

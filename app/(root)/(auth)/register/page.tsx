@@ -25,10 +25,19 @@ const Page = () => {
         throw new Error("Passwords do not match");
       }
 
-      // Validate wallet address format (basic check) if 32 bytes
+      // // Validate wallet address is 32 bytes
+      // try {
+      //   // This will throw if invalid;
+      //   // Verify it's exactly 32 bytes
+      //   if (wallet.toBytes().length !== 32) {
+      //     throw new Error("Invalid wallet address length");
+      //   }
+      // } catch (err) {
+      //   throw new Error("Please enter a valid Solana wallet address");
+      // }
 
       // API call to register
-      const res = await fetch("/api/auth/register", {
+      const res = await fetch("/api/auth/connect-wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +52,7 @@ const Page = () => {
       }
 
       // Redirect to login after successful registration
-      router.push("/login");
+      router.push("/connect-wallet");
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -58,10 +67,10 @@ const Page = () => {
           Create Account
         </h1>
         <p className="text-indigo-200 mb-2">Join our platform</p>
-        <div className="text-xs bg-indigo-900/60 text-white p-3 rounded-lg w-full text-center mb-4">
-          <i className="bx bx-info-circle"></i> Please register with the{" "}
-          <b>SOLANA</b> wallet you can make purchases on, payments are verified
-          based on your wallet address
+        <div className="text-xs bg-indigo-900/60 text-white p-3 rounded-lg w-full flex-center text-center mb-4">
+          <i className="bx bx-info-circle"></i> Please register with the SOLANA
+          wallet you can make purchases on, payments are verified based on your
+          wallet address
         </div>
       </div>
 
@@ -115,7 +124,7 @@ const Page = () => {
       <div className="mt-6 text-center text-sm text-indigo-200">
         Already have an account?{" "}
         <Link
-          href="/login"
+          href="/connect-wallet"
           className="font-medium text-indigo-300 hover:text-indigo-200 transition"
         >
           Sign in

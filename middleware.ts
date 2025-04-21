@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
   const isProtected = protectedRoutes.some((route) => request.nextUrl.pathname.startsWith(route));
 
   if (isProtected && !token) {
-    const loginUrl = new URL("/login", request.url);
+    const loginUrl = new URL("/connect-wallet", request.url);
     loginUrl.searchParams.set("callbackUrl", request.nextUrl.pathname); // Optional: redirect back after login
     return NextResponse.redirect(loginUrl);
   }

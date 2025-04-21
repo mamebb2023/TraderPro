@@ -69,7 +69,7 @@ const CallToAction = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button>
-            <Link href="/register">Start Tracking Now</Link>
+            <Link href="/connect-wallet">Start Tracking Now</Link>
           </Button>
           <Button variant="outline">
             <Link href="/#how-it-works">See Example Dashboard</Link>

@@ -3,16 +3,19 @@
 import CallToAction1 from "@/components/CallToAction1";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
-import { useSession } from "next-auth/react";
+import Pricing from "@/components/Pricing";
+import CallToAction2 from "@/components/CallToAction2";
+import HowItWorks from "@/components/HowItWorks";
 
 export default function UserInfo() {
-  const { data: session, status } = useSession();
-
   return (
     <>
       <Hero />
       <Features />
       <CallToAction1 />
+      <HowItWorks />
+      <Pricing />
+      <CallToAction2 />
     </>
   );
 }

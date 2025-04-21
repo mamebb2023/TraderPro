@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const Footer = () => {
   const quickLinks = [
-    { name: "Home", href: "/" },
     { name: "Features", href: "/#features" },
     { name: "How It Works", href: "/#how-it-works" },
     { name: "Pricing", href: "/#pricing" },
@@ -13,51 +12,45 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    {
-      name: "Instagram",
-      icon: "bx bxl-instagram",
-      href: "https://instagram.com",
-    },
-    { name: "Telegram", icon: "bx bxl-telegram", href: "https://telegram.org" },
-    {
-      name: "Discord",
-      icon: "bx bxl-discord-alt",
-      href: "https://discord.com",
-    },
+    { name: "Instagram", icon: "bx bxl-instagram", href: "#" },
+    { name: "Telegram", icon: "bx bxl-telegram", href: "#" },
+    { name: "Discord", icon: "bx bxl-discord-alt", href: "#" },
   ];
 
   return (
-    <footer className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-3xl mx-4 md:mx-8 lg:mx-16 my-5 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-10">
-          {/* Logo section (left) */}
-          <div className="flex flex-col items-start">
-            <Link href="/" className="mb-6">
+    <footer className="w-full border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Logo + Description */}
+          <div className="md:col-span-4 flex-grow">
+            <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/tp-logo-white.png"
                 alt="TrackerPro"
                 width={60}
                 height={60}
-                className="hover:scale-105 transition-transform duration-300"
+                className="flex-shrink-0"
               />
-            </Link>
-            <p className="text-gray-400 max-w-xs">
-              The most powerful Solana wallet tracking platform for professional
-              traders.
+              <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
+                TrackerPro
+              </span>
+            </div>
+            <p className="text-gray-400">
+              Professional Solana wallet tracking platform
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
+          <div className="md:col-span-3 md:col-start-6">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -66,10 +59,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Media */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Connect With Us
+          {/* Social Links - Right-aligned */}
+          <div className="md:col-span-3 md:col-start-10">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+              Connect
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -88,23 +81,23 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom divider and copyright */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} TrackerPro. All rights reserved.
           </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex gap-4 mt-4 md:mt-0">
             <Link
               href="/privacy"
               className="text-gray-500 hover:text-gray-300 text-sm"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <Link
               href="/terms"
               className="text-gray-500 hover:text-gray-300 text-sm"
             >
-              Terms of Service
+              Terms
             </Link>
           </div>
         </div>

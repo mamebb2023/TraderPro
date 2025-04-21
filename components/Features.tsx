@@ -8,12 +8,13 @@ const Features = () => {
     {
       title: "Track Solana Wallets",
       description:
-        "Monitor multiple wallets with real-time updates on transactions by adding them to your watchlist",
+        "TrackerPro monitors multiple wallets with real-time updates on transactions",
       icon: "bx-wallet",
     },
     {
       title: "Fast Notification Alerts",
-      description: "Get instant alerts for important wallet activity",
+      description:
+        "Get instant alerts for important wallet activity with TrackerPro",
       icon: "bx-bell",
     },
     {
@@ -24,12 +25,12 @@ const Features = () => {
     {
       title: "Get Any Wallet Info",
       description:
-        "Access detailed information about any Solana wallet, including token balances and transaction history",
+        "Access detailed information about any Solana coin, including token balances and transaction history",
       icon: "bx-info-circle",
     },
     {
       title: "Discord Integration",
-      description: "Receive notifications in our Discord server",
+      description: "Receive notifications in our TrackerPro Discord server",
       icon: "bxl-discord-alt",
     },
     {

@@ -104,7 +104,7 @@ const Page = () => {
       <div className="mt-6 text-center text-sm text-indigo-200">
         Don't have an account?{" "}
         <Link
-          href="/register"
+          href="/connect-wallet"
           className="font-medium text-indigo-300 hover:text-indigo-200 transition"
         >
           Sign up

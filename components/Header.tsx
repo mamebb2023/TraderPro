@@ -63,7 +63,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-7 lg:px-10 transition-all duration-300 ${
-        isScrolled ? "py-2 backdrop-blur-sm bg-black/40" : "py-4 bg-transparent"
+        isScrolled ? "py-2 backdrop-blur-xs bg-black/5" : "py-4 bg-transparent"
       }`}
     >
       {/* Left nav links (desktop) */}
@@ -111,7 +111,7 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Link href="/login" className="on-hover-underline">
+            <Link href="/connect-wallet" className="on-hover-underline">
               Login
             </Link>
             <Button>
@@ -200,7 +200,7 @@ const Header = () => {
                   ) : (
                     <>
                       <Button variant="outline">
-                        <Link href="/login">Login</Link>
+                        <Link href="/connect-wallet">Login</Link>
                       </Button>
                       <Button>
                         <Link href="/signup">Get Started</Link>

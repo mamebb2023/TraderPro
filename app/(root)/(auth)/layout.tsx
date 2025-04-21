@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -30,6 +31,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="size-90 bg-purple-dino-dark rounded-full shrink-0" />
         <div className="size-90 bg-ocean-blue-dark rounded-full shrink-0" />
         <div className="size-90 bg-surge-green-dark rounded-full shrink-0" />
+      </div>
+
+      <div className="absolute bottom-5 right-5 bg-gradient-to-br from-purple-dino-dark via-ocean-blue-dark to-surge-green-dark rounded-full w-14 h-14 flex-center border-2 border-transparent hover:border-white transition-all">
+        <Link href="/">
+          <i className="bx bxs-home" />
+        </Link>
       </div>
 
       <div className="z-1 flex-1 flex-center">{children}</div>
