@@ -37,7 +37,7 @@
   }
 
   .bg-glass {
-    @apply bg-white/10 backdrop-blur-md rounded-lg border border-white/20;
+    @apply bg-gradient-to-br from-white/5 via-white/20 to-white/5  backdrop-blur-md rounded-lg border border-white/20;
   }
 }
 

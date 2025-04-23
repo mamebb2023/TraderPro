@@ -8,6 +8,8 @@ import { useSession, signOut } from "next-auth/react";
 import Loading from "./shared/Loading";
 import { AnimatePresence, motion } from "framer-motion";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
+import ConnectWallet from "./Wallet/ConnectWallet";
+import { formatAddress } from "@/lib/utils";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -99,7 +101,9 @@ const Header = () => {
         ) : session ? (
           <>
             <Button>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/dashboard">
+                {formatAddress(session?.user.wallet ?? "")}
+              </Link>
             </Button>
             <button
               onClick={() => signOut({ callbackUrl: "/" })}
@@ -110,14 +114,7 @@ const Header = () => {
             </button>
           </>
         ) : (
-          <>
-            <Link href="/connect-wallet" className="on-hover-underline">
-              Login
-            </Link>
-            <Button>
-              <Link href="/signup">Get Started</Link>
-            </Button>
-          </>
+          <ConnectWallet />
         )}
       </div>
 

@@ -55,7 +55,7 @@ const Hero = () => {
         {/* Logo */}
         <motion.div
           variants={itemVariants}
-          className="mb-8 w-24 h-24 flex items-center justify-center bg-gradient-to-br from-white/5 via-white/20 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-4"
+          className="mb-8 w-24 h-24 flex items-center justify-center rounded-2xl bg-glass border p-4"
         >
           <Image
             src="/tp-logo-white.png"

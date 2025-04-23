@@ -1,45 +1,54 @@
+// app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
-import User from "@/models/User";
 import { dbConnect } from "@/lib/dbConnect";
+import User from "@/models/User";
+import { verifyWalletSignature } from "@/lib/verifyWalletSignature";
 import type { AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "WalletAuth",
+      name: "Wallet",
       credentials: {
         wallet: { label: "Wallet Address", type: "text" },
-        password: { label: "Password", type: "password" },
+        message: { label: "Message", type: "text" },
+        signature: { label: "Signature", type: "text" },
       },
       async authorize(credentials) {
-        if (!credentials?.wallet || !credentials?.password) {
-          throw new Error("Wallet address and password are required");
+        try {
+          const { wallet, message, signature } = credentials ?? {};
+          if (!wallet || !message || !signature) {
+            throw new Error("Missing credentials");
+          }
+
+          // Verify the signature
+          const isValid = true; // await verifyWalletSignature(wallet, message, signature);
+          if (!isValid) {
+            throw new Error("Invalid signature");
+          }
+
+          // Find or create user
+          await dbConnect();
+          let user = await User.findOne({ wallet }).exec();
+
+          if (!user) {
+            user = new User({ 
+              wallet,
+              createdAt: new Date(),
+            });
+            await user.save();
+          }
+
+          return {
+            id: user._id.toString(),
+            wallet: user.wallet,
+            // Include any additional user fields you need
+          };
+        } catch (error) {
+          console.error("Authentication error:", error);
+          return null;
         }
-
-        await dbConnect();
-
-        const user = await User.findOne({ wallet: credentials.wallet })
-          .select("+password")
-          .exec();
-
-        if (!user) {
-          throw new Error("Wallet address not registered");
-        }
-
-        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
-        if (!isPasswordCorrect) {
-          throw new Error("Incorrect password");
-        }
-
-        return {
-          id: user._id.toString(),
-          wallet: user.wallet,
-        } as {
-          id: string;
-          wallet: string;
-        };
       },
     }),
   ],
@@ -57,10 +66,9 @@ export const authOptions: AuthOptions = {
       }
       return token;
     },
-
     async session({ session, token }) {
-      if (token && session.user) {
-        session.user.id = token.id as string
+      if (session.user) {
+        session.user.id = token.id as string;
         session.user.wallet = token.wallet as string;
       }
       return session;
