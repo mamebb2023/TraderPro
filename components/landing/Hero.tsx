@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./shared/Button";
+import Button from "../shared/Button";
 import { motion } from "framer-motion";
 
 // Animation variants
@@ -58,7 +58,7 @@ const Hero = () => {
           className="mb-8 w-24 h-24 flex items-center justify-center rounded-2xl bg-glass border p-4"
         >
           <Image
-            src="/tp-logo-white.png"
+            src="/tp-logo-white-md.png"
             alt="Solana Tracker Pro"
             width={80}
             height={80}

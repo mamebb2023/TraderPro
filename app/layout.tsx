@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Funnel_Sans } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const font = Funnel_Sans({
@@ -24,7 +25,20 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${font.className} antialiased`}>{children}</body>
+      <body className={`${font.className} antialiased`}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
+
+declare global {
+  interface BigInt {
+    toJSON(): string;
+  }
+}
+
+BigInt.prototype.toJSON = function () {
+  return this.toString();
+};

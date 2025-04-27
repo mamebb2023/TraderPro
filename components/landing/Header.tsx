@@ -3,16 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Button from "./shared/Button";
-import { useSession, signOut } from "next-auth/react";
-import Loading from "./shared/Loading";
 import { AnimatePresence, motion } from "framer-motion";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import ConnectWallet from "./Wallet/ConnectWallet";
-import { formatAddress } from "@/lib/utils";
+import ConnectWalletButton from "../ConnectWalletButton";
+import { useSession } from "next-auth/react";
+import { ellipsify } from "@/lib/utils";
+import Button from "../shared/Button";
+import Loading from "../shared/Loading";
+import { ClusterButton, WalletButton } from "../providers/solana-provider";
 
 const Header = () => {
-  const { data: session, status } = useSession();
+  const { data, status } = useSession();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -98,24 +100,21 @@ const Header = () => {
       <div className="hidden w-[33%] md:flex gap-3 items-center justify-end">
         {status === "loading" ? (
           <Loading />
-        ) : session ? (
-          <>
-            <Button>
-              <Link href="/dashboard">
-                {formatAddress(session?.user.wallet ?? "")}
-              </Link>
+        ) : status === "authenticated" ? (
+          <Link
+            href={`/account/${data?.user.wallet.toString()}`}
+            className="text-sm"
+          >
+            <Button variant="outline">
+              <i className="bx bxs-wallet"></i>
+              {ellipsify(data?.user.wallet.toString())}
             </Button>
-            <button
-              onClick={() => signOut({ callbackUrl: "/" })}
-              title="Logout"
-              className="text-white hover:text-red-500 transition-colors"
-            >
-              <i className="bx bx-log-out"></i>
-            </button>
-          </>
+          </Link>
         ) : (
-          <ConnectWallet />
+          <ConnectWalletButton />
         )}
+        <WalletButton size="sm" />
+        <ClusterButton size="sm" />
       </div>
 
       {/* Mobile menu button */}
@@ -179,31 +178,7 @@ const Header = () => {
                 </div>
 
                 <div className="flex-center gap-3 bg-white/30 p-4 m-4 rounded-md">
-                  {status === "loading" ? (
-                    <Loading />
-                  ) : session ? (
-                    <>
-                      <Button>
-                        <Link href="/dashboard">Dashboard</Link>
-                      </Button>
-                      <button
-                        onClick={() => signOut({ callbackUrl: "/" })}
-                        title="Logout"
-                        className="hover:text-red-500 transition"
-                      >
-                        <i className="bx bx-log-out"></i>
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <Button variant="outline">
-                        <Link href="/connect-wallet">Login</Link>
-                      </Button>
-                      <Button>
-                        <Link href="/signup">Get Started</Link>
-                      </Button>
-                    </>
-                  )}
+                  update wallet login
                 </div>
               </motion.div>
             </motion.div>

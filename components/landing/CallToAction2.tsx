@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "./shared/Button";
+import Button from "../shared/Button";
 
 const CallToAction = () => {
   return (

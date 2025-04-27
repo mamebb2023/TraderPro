@@ -17,14 +17,14 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={`py-2 px-5 font-bold flex-center gap-2 rounded-md ${className}
+      className={`py-2 px-5 font-bold flex-center gap-2 rounded-md transition-all ${className}
       ${
         disabled
           ? "opacity-50 bg-gradient-to-r from-purple-dino via-ocean-blue to-surge-green cursor-not-allowed"
           : variant === "solid"
           ? "cursor-pointer btn-grad"
           : variant === "outline"
-          ? "border-2 border-white/30 hover:bg-white/5"
+          ? "cursor-pointer border-2 border-white/30 hover:bg-white/10"
           : ""
       }`}
       disabled={disabled}

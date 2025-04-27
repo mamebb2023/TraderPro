@@ -3,8 +3,9 @@
 
 import { useSignIn } from "@solana/react";
 import type { UiWallet } from "@wallet-standard/react";
-import Loading from "../shared/Loading";
 import { signIn } from "next-auth/react";
+import Loading from "./shared/Loading";
+import toast from "react-hot-toast";
 
 export function WalletButton({
   wallet,
@@ -31,10 +32,6 @@ export function WalletButton({
         statement: message,
       });
 
-      console.log("Wallet Account:", account);
-      console.log("Signature:", signature.toString());
-      console.log("Signed Message:", signedMessage.toString());
-
       // 2. Authenticate with NextAuth
       const result = await signIn("credentials", {
         redirect: false,
@@ -43,6 +40,10 @@ export function WalletButton({
         signature: signature.toString(),
         callbackUrl: "/dashboard",
       });
+
+      if (result?.ok) {
+        toast.success("Wallet Connected!");
+      }
 
       if (result?.error) {
         throw new Error(result.error);

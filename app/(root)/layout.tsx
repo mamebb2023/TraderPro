@@ -1,11 +1,11 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
+import { AppProviders } from "@/components/providers/app-providers";
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SessionProvider>
+    <AppProviders>
       <div className="bg-gradient-to-br from-purple-900/40 via-indigo-900/40 to-black h-screen overflow-hidden relative">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-64 h-64 bg-purple-600/10 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </div>
       </div>
-    </SessionProvider>
+    </AppProviders>
   );
 };
 

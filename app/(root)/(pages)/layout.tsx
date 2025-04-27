@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "@/components/landing/Footer";
+import Header from "@/components/landing/Header";
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

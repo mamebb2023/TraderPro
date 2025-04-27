@@ -3,11 +3,10 @@
 import { useState } from "react";
 import { SolanaSignIn } from "@solana/wallet-standard-features";
 import { useWallets } from "@wallet-standard/react";
-import { WalletButton } from "@/components/Wallet/WalletButton";
 import Button from "@/components/shared/Button";
-import Loading from "../shared/Loading";
+import { WalletButton } from "./WalletButton";
 
-export default function ConnectWallet() {
+export default function ConnectWalletButton() {
   const wallets = useWallets();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

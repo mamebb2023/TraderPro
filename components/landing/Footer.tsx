@@ -19,13 +19,13 @@ const Footer = () => {
 
   return (
     <footer className="w-full border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Logo + Description */}
           <div className="md:col-span-4 flex-grow">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/tp-logo-white.png"
+                src="/tp-logo-white-md.png"
                 alt="TrackerPro"
                 width={60}
                 height={60}
@@ -82,22 +82,22 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-10 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} TrackerPro. All rights reserved.
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <Link
-              href="/privacy"
+              href="/privacy-policy"
               className="text-gray-500 hover:text-gray-300 text-sm"
             >
-              Privacy
+              Privacy Policy
             </Link>
             <Link
-              href="/terms"
+              href="/terms-and-conditions"
               className="text-gray-500 hover:text-gray-300 text-sm"
             >
-              Terms
+              Terms and Conditions
             </Link>
           </div>
         </div>
