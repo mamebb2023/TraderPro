@@ -1,16 +1,10 @@
 "use client";
 
+import { links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
-  const quickLinks = [
-    { name: "Features", href: "/#features" },
-    { name: "How It Works", href: "/#how-it-works" },
-    { name: "Pricing", href: "/#pricing" },
-    { name: "Contact Us", href: "/contact-us" },
-  ];
-
   const socialLinks = [
     { name: "Instagram", icon: "bx bxl-instagram", href: "#" },
     { name: "Telegram", icon: "bx bxl-telegram", href: "#" },
@@ -46,7 +40,7 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {links.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

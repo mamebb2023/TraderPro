@@ -11,6 +11,7 @@ import { ellipsify } from "@/lib/utils";
 import Button from "../shared/Button";
 import Loading from "../shared/Loading";
 import { ClusterButton, WalletButton } from "../providers/solana-provider";
+import { links } from "@/constants";
 
 const Header = () => {
   const { data, status } = useSession();
@@ -72,15 +73,11 @@ const Header = () => {
     >
       {/* Left nav links (desktop) */}
       <div className="hidden md:flex w-[33%] gap-4 items-center">
-        <Link href="/#features" className="on-hover-underline">
-          Features
-        </Link>
-        <Link href="/#how-it-works" className="on-hover-underline">
-          How It Works
-        </Link>
-        <Link href="/#pricing" className="on-hover-underline">
-          Pricing
-        </Link>
+        {links.map((link) => (
+          <Link key={link.name} href={link.href} className="on-hover-underline">
+            {link.name}
+          </Link>
+        ))}
       </div>
 
       {/* Center logo (desktop/mobile) */}
