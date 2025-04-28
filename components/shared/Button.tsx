@@ -6,6 +6,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "outline" | "solid";
   className?: string;
   disabled?: boolean;
+  customStyles?: string;
 }
 
 const Button = ({
@@ -13,11 +14,15 @@ const Button = ({
   className,
   disabled,
   variant = "solid",
+  customStyles,
   ...props
 }: Props) => {
   return (
     <button
-      className={`py-2 px-5 font-bold flex-center gap-2 rounded-md transition-all ${className}
+      className={
+        customStyles
+          ? customStyles
+          : `${className} py-2 px-5 font-bold flex-center gap-2 rounded-md transition-all 
       ${
         disabled
           ? "opacity-50 bg-gradient-to-r from-purple-dino via-ocean-blue to-surge-green cursor-not-allowed"
@@ -26,7 +31,8 @@ const Button = ({
           : variant === "outline"
           ? "cursor-pointer border-2 border-white/30 hover:bg-white/10"
           : ""
-      }`}
+      }`
+      }
       disabled={disabled}
       {...props}
     >

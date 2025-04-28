@@ -1,27 +1,58 @@
-import mongoose from "mongoose";
-import process from "process";
+import mongoose, { Mongoose } from 'mongoose';
 
-let isConnected: boolean = false;
+// Type for our cached connection
+interface MongooseCache {
+  conn: Mongoose | null;
+  promise: Promise<Mongoose> | null;
+}
 
-export const dbConnect = async () => {
-  mongoose.set("strictQuery", true);
+// Extend the global object with mongoose cache
+declare global {
+  var mongoose: MongooseCache;
+}
 
-  if (!process.env.MONGODB_URL) {
-    return console.log("MongoDB URL is not provided!");
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error('MONGODB_URI is not defined in environment variables');
+}
+
+let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
+
+async function dbConnect(): Promise<Mongoose> {
+  if (cached.conn) {
+    return cached.conn;
   }
 
-  if (isConnected) {
-    return console.log("Using existing database connection...");
+  if (!cached.promise) {
+    const opts: mongoose.ConnectOptions = {
+      bufferCommands: false,
+      serverSelectionTimeoutMS: 10000, // 10 seconds timeout
+      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    };
+
+    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
+      console.log('MongoDB connection established');
+      return mongoose;
+    }).catch((err) => {
+      console.error('MongoDB connection error:', err);
+      throw err;
+    });
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URL!, {
-      dbName: process.env.DB_NAME!,
-    });
-
-    isConnected = true;
-    console.log("MongoDB Connected.");
-  } catch (error) {
-    console.log(error);
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
   }
-};
+
+  return cached.conn;
+}
+
+// Initialize the cache if we're in development mode
+if (process.env.NODE_ENV === 'development') {
+  global.mongoose = cached;
+}
+
+export default dbConnect;

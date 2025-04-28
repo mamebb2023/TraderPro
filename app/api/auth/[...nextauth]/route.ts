@@ -1,10 +1,17 @@
 // app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { dbConnect } from "@/lib/dbConnect";
 import User from "@/models/User";
-import { verifyWalletSignature } from "@/lib/verifyWalletSignature";
 import type { AuthOptions } from "next-auth";
+import dbConnect from "@/lib/dbConnect";
+
+// Initialize mongoose models
+async function initModels() {
+  await dbConnect();
+}
+
+// Call this once when the server starts
+initModels().catch(console.error);
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -12,38 +19,36 @@ export const authOptions: AuthOptions = {
       name: "Wallet",
       credentials: {
         wallet: { label: "Wallet Address", type: "text" },
-        message: { label: "Message", type: "text" },
-        signature: { label: "Signature", type: "text" },
       },
       async authorize(credentials) {
         try {
-          const { wallet, message, signature } = credentials ?? {};
-          if (!wallet || !message || !signature) {
-            throw new Error("Missing credentials");
+          const { wallet } = credentials ?? {};
+          if (!wallet) {
+            throw new Error("Wallet address is required");
           }
 
-          // Verify the signature
+          // Verify the signature would go here
           const isValid = true; // await verifyWalletSignature(wallet, message, signature);
+
           if (!isValid) {
             throw new Error("Invalid signature");
           }
 
-          // Find or create user
+          // Ensure connection is active
           await dbConnect();
+
           let user = await User.findOne({ wallet }).exec();
 
           if (!user) {
-            user = new User({ 
+            user = await User.create({ 
               wallet,
               createdAt: new Date(),
             });
-            await user.save();
           }
 
           return {
             id: user._id.toString(),
             wallet: user.wallet,
-            // Include any additional user fields you need
           };
         } catch (error) {
           console.error("Authentication error:", error);
@@ -52,12 +57,10 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
-
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -74,13 +77,8 @@ export const authOptions: AuthOptions = {
       return session;
     },
   },
-
-  pages: {
-    signIn: "/login",
-    error: "/login",
-  },
-
   secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === 'development',
 };
 
 const handler = NextAuth(authOptions);
