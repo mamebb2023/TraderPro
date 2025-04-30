@@ -2,33 +2,16 @@
 
 :root {
   scroll-behavior: smooth;
-  --color-blue: #0000ff;
-  --color-green: #00ff6a;
-
-  /* solana colors */
+  
   --color-purple-dino: #dc1fff;
   --color-ocean-blue: #03e1ff;
   --color-surge-green: #00ffa3;
-
-  /* solana colors dark */
-  --color-purple-dino-dark: #87149b;
-  --color-ocean-blue-dark: #008a9d;
-  --color-surge-green-dark: #00965f;
 }
 
 @theme {
-  --color-blue: var(--color-blue);
-  --color-green: var(--color-green);
-
-  /* solana colors */
   --color-purple-dino: var(--color-purple-dino);
   --color-ocean-blue: var(--color-ocean-blue);
   --color-surge-green: var(--color-surge-green);
-
-  /* solana colors dark */
-  --color-purple-dino-dark: var(--color-purple-dino);
-  --color-ocean-blue-dark: var(--color-ocean-blue);
-  --color-surge-green-dark: var(--color-surge-green);
 }
 
 @layer utilities {
@@ -37,13 +20,12 @@
   }
 
   .bg-glass {
-    @apply bg-gradient-to-br from-white/5 via-white/20 to-white/5  backdrop-blur-md rounded-lg border border-white/20;
+    @apply bg-gradient-to-br from-purple-300/5 via-purple-400/30 to-purple-300/5  backdrop-blur-md border border-purple-300/20;
   }
 }
 
 body {
-  color: white;
-  background: black;
+  color: black;
 }
 
 ::-webkit-scrollbar {
@@ -52,7 +34,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   opacity: 0.3; 
   border-radius: 4px;
 }
@@ -92,12 +74,14 @@ body {
 .on-hover-underline {
   position: relative;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .on-hover-underline::after {
   content: "";
   position: absolute;
-  left: 0;
   bottom: -3px;
   height: 4px;
   border-radius: 3px;
@@ -115,37 +99,6 @@ body {
   width: 80%;
 }
 
-.btn-grad {
-  background-image: linear-gradient(
-    to right,
-    var(--color-purple-dino) 0%,
-    var(--color-ocean-blue) 51%,
-    var(--color-surge-green) 100%
-  );
-}
-
-.btn-grad {
-  text-transform: uppercase;
-  transition: all 0.5s ease;
-  background-size: 200% auto;
-  border-radius: 5px;
-  display: block;
-}
-
-.btn-grad:hover {
-  box-shadow: 0 0 20px #eee;
-  background-position: right center;
-}
-
-.rotate-animation {
-  animation: rotate 30s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.after-features {
+  position: relative;
 }

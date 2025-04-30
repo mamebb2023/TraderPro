@@ -3,41 +3,48 @@ import Loading from "./Loading";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant?: "outline" | "solid";
+  variant?: "outline" | "solid" | "ghost";
   className?: string;
   disabled?: boolean;
   customStyles?: string;
+  isLoading?: boolean;
 }
 
 const Button = ({
   children,
-  className,
+  className = "",
   disabled,
   variant = "solid",
   customStyles,
+  isLoading = false,
   ...props
 }: Props) => {
+  const solidStyle =
+    "text-white bg-gradient-to-tr from-purple-600 via-blue-500 to-green-500 shadow-lg hover:shadow-white-500/30 hover:scale-[1.02] active:scale-95";
+  const outlineStyle = `border-2 border-purple-500 text-purple-500 bg-transparent hover:bg-purple-500/10 hover:shadow-purple-500/20 hover:scale-[1.02] active:scale-95`;
+  const ghostStyle = `text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 hover:shadow-lg hover:scale-[1.02] active:scale-95`;
+
+  const variantStyles = {
+    solid: solidStyle,
+    outline: outlineStyle,
+    ghost: ghostStyle,
+  };
+
   return (
     <button
       className={
         customStyles
           ? customStyles
-          : `${className} py-2 px-5 font-bold flex-center gap-2 rounded-md transition-all 
-      ${
-        disabled
-          ? "opacity-50 bg-gradient-to-r from-purple-dino via-ocean-blue to-surge-green cursor-not-allowed"
-          : variant === "solid"
-          ? "cursor-pointer btn-grad"
-          : variant === "outline"
-          ? "cursor-pointer border-2 border-white/30 hover:bg-white/10"
-          : ""
-      }`
+          : `py-2.5 px-6 font-medium flex items-center justify-center gap-2 rounded-full transition-all duration-200 ease-out ${className} cursor-pointer ${
+              disabled || isLoading
+                ? "opacity-60 cursor-not-allowed transform-none shadow-none"
+                : variantStyles[variant]
+            }`
       }
-      disabled={disabled}
+      disabled={disabled || isLoading}
       {...props}
     >
-      {children}
-      {disabled && <Loading />}
+      {isLoading ? <Loading /> : children}
     </button>
   );
 };

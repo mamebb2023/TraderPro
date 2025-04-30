@@ -1,188 +1,119 @@
 "use client";
 
+import { links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import ConnectWalletButton from "../ConnectWalletButton";
-import { useSession } from "next-auth/react";
-import { ellipsify } from "@/lib/utils";
+import React, { useEffect, useRef } from "react";
 import Button from "../shared/Button";
-import Loading from "../shared/Loading";
-import { ClusterButton, WalletButton } from "../providers/solana-provider";
-import { links } from "@/constants";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
-  const { data, status } = useSession();
-
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const page = document.getElementById("page");
-    if (!page) return;
-
     const handleScroll = () => {
-      if (page.scrollTop > 150) {
-        setIsScrolled(true);
-      } else {
+      const currentScrollY = window.scrollY;
+
+      // Show header when scrolling up or at top
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
         setIsScrolled(false);
       }
+      // Hide header when scrolling down
+      else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsScrolled(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    page.addEventListener("scroll", handleScroll);
-    return () => page.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-      enablePageScroll();
-    } else {
-      setIsMenuOpen(true);
-      disablePageScroll();
-    }
+  const headerVariants = {
+    hidden: {
+      y: "-100%",
+      opacity: 0,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
   };
 
-  const menuVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0, transition: { delay: 0.5 } },
-  };
-
-  const menuContentVariants = {
-    initial: {
-      clipPath: "polygon(100% 0, 100% 0%, 100% 100%, 100% 100%)",
+  const linkVariants = {
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.2 },
     },
-    animate: {
-      clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0% 100%)",
-      transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1] },
-    },
-    exit: {
-      clipPath: "polygon(100% 0, 100% 0%, 100% 100%, 100% 100%)",
-      transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1] },
+    tap: {
+      scale: 0.95,
     },
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-7 lg:px-10 transition-all duration-300 ${
-        isScrolled ? "py-2 backdrop-blur-xs bg-black/5" : "py-4 bg-transparent"
-      }`}
-    >
-      {/* Left nav links (desktop) */}
-      <div className="hidden md:flex w-[33%] gap-4 items-center">
-        {links.map((link) => (
-          <Link key={link.name} href={link.href} className="on-hover-underline">
-            {link.name}
-          </Link>
-        ))}
-      </div>
-
-      {/* Center logo (desktop/mobile) */}
-      <div className="md:w-[33%] flex-center md:border-l md:border-r md:border-gray-500/50">
-        <Link href="/">
-          <Image
-            src="/tp-logo-white.png"
-            alt="TrackerPro"
-            width={isScrolled ? 40 : 50}
-            height={isScrolled ? 40 : 50}
-            className="hover:scale-105 transition-all duration-500"
-          />
-        </Link>
-      </div>
-
-      {/* Right user actions (desktop)*/}
-      <div className="hidden w-[33%] md:flex gap-3 items-center justify-end">
-        {status === "loading" ? (
-          <Loading />
-        ) : status === "authenticated" ? (
-          <Link
-            href={`/account/${data?.user.wallet.toString()}`}
-            className="text-sm"
-          >
-            <Button variant="outline">
-              <i className="bx bxs-wallet"></i>
-              {ellipsify(data?.user.wallet.toString())}
-            </Button>
-          </Link>
-        ) : (
-          <ConnectWalletButton />
-        )}
-        <WalletButton size="sm" />
-        <ClusterButton size="sm" />
-      </div>
-
-      {/* Mobile menu button */}
-      <div className="md:hidden">
-        <button onClick={toggleMenu} className="p-2 cursor-pointer">
-          <i className="bx bx-menu-alt-right" />
-        </button>
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              variants={menuVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="z-10 fixed top-0 left-0 bg-black/60 h-screen w-screen flex justify-end"
-            >
+    <AnimatePresence>
+      {!isScrolled && (
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={headerVariants}
+          className="fixed top-0 left-0 right-0 z-50 py-4 flex-center"
+        >
+          <motion.div className="w-[90%] md:w-[80%] lg:w-[70%] px-10 py-2 flex items-center justify-between bg-glass rounded-full">
+            <Link href="/">
               <motion.div
-                variants={menuContentVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="w-2/3 h-full bg-gradient-to-tr from-purple-dino-dark via-ocean-blue-dark to-surge-green-dark flex flex-col"
+                whileHover="hover"
+                whileTap="tap"
+                variants={linkVariants}
               >
-                <div className="flex item-center justify-end p-1">
-                  <button onClick={toggleMenu} className="p-2 cursor-pointer">
-                    <i className="bx bx-x" />
-                  </button>
-                </div>
-
-                <div className="flex-grow flex items-end">
-                  <div className="flex flex-col gap-1 p-5 items-start">
-                    <Link
-                      href="/"
-                      onClick={toggleMenu}
-                      className="on-hover-underline text-xl"
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      href="/#features"
-                      onClick={toggleMenu}
-                      className="on-hover-underline text-xl"
-                    >
-                      Features
-                    </Link>
-                    <Link
-                      href="/#how-it-works"
-                      onClick={toggleMenu}
-                      className="on-hover-underline text-xl"
-                    >
-                      How It Works
-                    </Link>
-                    <Link
-                      href="/#pricing"
-                      onClick={toggleMenu}
-                      className="on-hover-underline text-xl"
-                    >
-                      Pricing
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="flex-center gap-3 bg-white/30 p-4 m-4 rounded-md">
-                  update wallet login
-                </div>
+                <Image
+                  src="/tp-logo-black.png"
+                  alt="TrackerPro"
+                  width={40}
+                  height={40}
+                  className="transition-all duration-500"
+                />
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </header>
+            </Link>
+
+            <div className="hidden lg:flex gap-2 items-center">
+              {links.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="on-hover-underline"
+                >
+                  <motion.div
+                    whileHover="hover"
+                    whileTap="tap"
+                    variants={linkVariants}
+                    className="px-3 py-1"
+                  >
+                    {link.name}
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+
+            <Link href="/">
+              <Button>
+                <motion.span
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Started
+                </motion.span>
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

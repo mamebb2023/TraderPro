@@ -1,50 +1,13 @@
 "use client";
 
+import { features } from "@/constants";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const Features = () => {
-  const features = [
-    {
-      title: "Track Solana Wallets",
-      description:
-        "TrackerPro monitors multiple wallets with real-time updates on transactions",
-      icon: "bx-wallet",
-    },
-    {
-      title: "Fast Notification Alerts",
-      description:
-        "Get instant alerts for important wallet activity with TrackerPro",
-      icon: "bx-bell",
-    },
-    {
-      title: "Beautiful Notification UI",
-      description: "Clean, intuitive interface for reciving alerts",
-      icon: "bx-message-square",
-    },
-    {
-      title: "Get Any Wallet Info",
-      description:
-        "Access detailed information about any Solana coin, including token balances and transaction history",
-      icon: "bx-info-circle",
-    },
-    {
-      title: "Discord Integration",
-      description: "Receive notifications in our TrackerPro Discord server",
-      icon: "bxl-discord-alt",
-    },
-    {
-      title: "Telegram Bot Integration",
-      description: "Get wallet updates through Telegram messages",
-      icon: "bxl-telegram",
-      comingSoon: true,
-    },
-  ];
-
   return (
     <section
       id="features"
-      className="py-20 bg-gradient-to-b from-gray-900 to-black"
+      className="py-20 bg-gradient-to-b from-white to-purple-100"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -68,52 +31,30 @@ const Features = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex justify-center flex-wrap gap-5">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: feature.comingSoon ? 0.6 : 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border ${
-                feature.comingSoon
-                  ? "border-gray-700/50"
-                  : "border-transparent hover:border-purple-500/30"
-              } transition-all duration-300`}
+              className={`relative z-5 p-5 w-80 bg-gradient-to-br from-purple-100 via-purple-5 to-white rounded-lg border-b border-r border-purple-400 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20`}
             >
-              <div className="flex items-start">
+              <div className="flex-center flex-col gap-1">
                 <div
-                  className={`p-3 rounded-lg ${
-                    feature.comingSoon
-                      ? "bg-gray-700/50 text-gray-400"
-                      : "bg-purple-600/10 text-purple-400"
-                  }`}
+                  className={`flex-center border-t border-l border-purple-400 p-3 rounded-full bg-purple-600/10 text-purple-400`}
                 >
                   <i className={`bx ${feature.icon} text-2xl`} />
                 </div>
-                <div className="ml-4">
-                  <h3
-                    className={`text-xl font-semibold ${
-                      feature.comingSoon ? "text-gray-400" : "text-white"
-                    }`}
-                  >
-                    {feature.title}
-                    <br />
-                    {feature.comingSoon && (
-                      <span className="ml-2 text-xs bg-gray-700/50 text-gray-300 px-2 py-1 rounded">
-                        Coming Soon
-                      </span>
-                    )}
-                  </h3>
-                  <p
-                    className={`mt-2 ${
-                      feature.comingSoon ? "text-gray-500" : "text-gray-300"
-                    }`}
-                  >
-                    {feature.description}
-                  </p>
-                </div>
+                <h3
+                  className={`text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-black`}
+                >
+                  {feature.title}
+                </h3>
+                <p className={`mt-2 text-gray-900 text-center`}>
+                  {feature.description}
+                </p>
               </div>
             </motion.div>
           ))}

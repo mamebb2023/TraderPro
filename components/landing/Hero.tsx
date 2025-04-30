@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../shared/Button";
 import { motion } from "framer-motion";
+import Button from "../shared/Button";
 
 // Animation variants
 const containerVariants = {
@@ -45,7 +45,6 @@ const gradientVariants = {
 const Hero = () => {
   return (
     <section className="relative overflow-hidden">
-      {/* Animated background elements */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -55,10 +54,10 @@ const Hero = () => {
         {/* Logo */}
         <motion.div
           variants={itemVariants}
-          className="mb-8 w-24 h-24 flex items-center justify-center rounded-2xl bg-glass border p-4"
+          className="mb-8 w-24 h-24 flex items-center justify-center rounded-2xl p-4"
         >
           <Image
-            src="/tp-logo-white-md.png"
+            src="/tp-logo-black.png"
             alt="Solana Tracker Pro"
             width={80}
             height={80}
@@ -72,7 +71,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-4xl md:text-6xl font-bold mb-4"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-purple-800 to-purple-900">
             Track{" "}
           </span>
           <motion.span
@@ -81,11 +80,11 @@ const Hero = () => {
           >
             SOLANA
           </motion.span>{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-900 via-purple-900 to-black">
             Wallets
           </span>
           <br />
-          <motion.span variants={itemVariants} className="text-purple-300">
+          <motion.span variants={itemVariants} className="text-purple-400">
             Like A Pro Trader
           </motion.span>
         </motion.h1>
@@ -93,18 +92,15 @@ const Hero = () => {
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8"
+          className="text-lg text-gray-400 max-w-2xl mb-8"
         >
           Monitor transactions, analyze portfolio performance, and get real-time
           alerts for Solana wallets - all in one powerful dashboard.
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 mb-12"
-        >
-          <Link href="/connect-wallet">
+        <motion.div variants={itemVariants} className="flex gap-4 mb-12">
+          <Link href="/">
             <Button>Start Tracking</Button>
           </Link>
           <Link href="/#features">
@@ -159,6 +155,7 @@ const Hero = () => {
           alt="SOL"
         />
       </motion.div>
+
       <motion.div
         initial={{ y: -30, opacity: 0 }}
         animate={{

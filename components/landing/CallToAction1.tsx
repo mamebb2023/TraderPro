@@ -54,7 +54,7 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
         >
           Monitor transactions, token balances, and coin movements for any
           wallet address. Perfect for tracking competitors, influencers, or

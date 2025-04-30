@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Funnel_Sans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import "lenis/dist/lenis.css";
+import ReactLenis from "lenis/react";
 
 const font = Funnel_Sans({
   subsets: ["latin"],
@@ -26,19 +28,16 @@ export default function RootLayout({
         />
       </head>
       <body className={`${font.className} antialiased`}>
-        {children}
-        <Toaster />
+        {/* Gradient background element */}
+        <div className="fixed inset-0 -z-50">
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-purple-200 to-blue-300"></div>
+        </div>
+
+        <ReactLenis root>
+          {children}
+          <Toaster />
+        </ReactLenis>
       </body>
     </html>
   );
 }
-
-declare global {
-  interface BigInt {
-    toJSON(): string;
-  }
-}
-
-BigInt.prototype.toJSON = function () {
-  return this.toString();
-};

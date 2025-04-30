@@ -39,13 +39,13 @@ const CallToAction = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="mb-8"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-purple-500 mb-4">
+            Stop guessing.{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              Stop guessing.{" "}
+              Start tracking.
             </span>
-            Start tracking.
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto">
             Join{" "}
             <span className="text-purple-400 font-medium">1,200+ traders</span>{" "}
             who track wallets smarter
@@ -59,13 +59,8 @@ const CallToAction = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/20">
-            Start Free Trial
-          </Button>
-          <Button
-            variant="outline"
-            className="px-8 py-3 border-white/20 hover:bg-white/5"
-          >
+          <Button>Start Free Trial</Button>
+          <Button variant="outline">
             <span className="flex items-center gap-2">
               <i className="bx bxl-discord-alt text-xl" />
               Join Discord
@@ -79,7 +74,7 @@ const CallToAction = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-10 flex flex-wrap justify-center gap-6 text-gray-400 text-sm"
+          className="mt-10 flex flex-wrap justify-center gap-6 text-sm"
         >
           <div className="flex items-center gap-2">
             <i className="bx bx-time-five text-purple-400" />
