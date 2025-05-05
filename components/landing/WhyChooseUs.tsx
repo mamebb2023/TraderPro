@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
   return (
     <section
       id="why-choose-us"
-      className="relative py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden"
+      className="relative py-10 md:py-14 lg:py-20 bg-white overflow-hidden"
     >
       {/* Floating elements */}
       <motion.div
@@ -21,10 +21,23 @@ const WhyChooseUs = () => {
             ease: "easeInOut",
           },
         }}
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-100/50 rounded-full filter blur-[90px]"
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/60 rounded-full filter blur-[90px]"
+      />
+      {/* Floating elements */}
+      <motion.div
+        animate={{
+          x: [0, -100, 0],
+          y: [0, 50, 0],
+          transition: {
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/60 rounded-full filter blur-[90px]"
       />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +69,7 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               className="w-[250px]"
             >
-              <div className="h-full p-6 rounded-2xl bg-white border border-gray-200 hover:border-transparent shadow-sm hover:shadow-md transition-all">
+              <div className="h-full p-6 rounded-2xl bg-white border border-purple-200 hover:border-transparent shadow-sm hover:shadow-md transition-all">
                 <div
                   className={`w-14 h-14 ${feature.bgColor} ${feature.color} rounded-xl flex items-center justify-center mb-4`}
                 >

@@ -7,9 +7,34 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="py-20 bg-gradient-to-b from-white to-purple-100"
+      className="relative py-20 bg-gradient-to-b from-white to-purple-100"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+          transition: {
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/60 rounded-full filter blur-[90px]"
+      />
+      {/* Floating elements */}
+      <motion.div
+        animate={{
+          x: [0, -100, 0],
+          y: [0, 50, 0],
+          transition: {
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/60 rounded-full filter blur-[90px]"
+      />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

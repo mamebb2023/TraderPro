@@ -1,8 +1,7 @@
 export const links = [
   { name: "Features", href: "/#features" },
-  { name: "How It Works", href: "/#how-it-works" },
+  { name: "About", href: "/#why-choose-us"},
   { name: "Pricing", href: "/#pricing" },
-  { name: "Contact Us", href: "/#contact-us" },
 ];
 
 export const plans = [
@@ -97,8 +96,7 @@ export const steps = [
 ];
 
 export const socialLinks = [
-  { name: "Instagram", icon: "bx bxl-instagram", href: "#" },
-  { name: "Telegram", icon: "bx bxl-telegram", href: "#" },
+  { name: "Telegram", icon: "bx bxl-twitter", href: "#" },
   { name: "Discord", icon: "bx bxl-discord-alt", href: "#" },
 ];
 

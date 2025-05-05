@@ -64,7 +64,7 @@ const Header = () => {
           variants={headerVariants}
           className="fixed top-0 left-0 right-0 z-50 py-4 flex-center"
         >
-          <motion.div className="w-[90%] md:w-[80%] lg:w-[70%] px-10 py-2 flex items-center justify-between bg-glass rounded-full">
+          <motion.div className="w-[90%] md:w-[80%] lg:w-[70%] px-10 py-2 flex items-center justify-between bg-glass rounded-full transition-all">
             <Link href="/">
               <motion.div
                 whileHover="hover"

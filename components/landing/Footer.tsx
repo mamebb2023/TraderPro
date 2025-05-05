@@ -6,11 +6,11 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-gray-300">
+    <footer className="w-full border-t border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Logo + Description */}
-          <div className="md:col-span-4 flex-grow">
+          <div className="md:col-span-4 flex items-center flex-grow">
             <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/tp-logo-black.png"

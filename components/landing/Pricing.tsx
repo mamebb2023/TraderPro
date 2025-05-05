@@ -8,16 +8,16 @@ const Pricing = () => {
   return (
     <section
       id="pricing"
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
+      className="relative py-20 bg-gradient-to-t from-transparent to-purple-300"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-purple-500 to-blue-500 mb-4"
           >
             Simple, Transparent Pricing
           </motion.h2>
@@ -42,7 +42,7 @@ const Pricing = () => {
               viewport={{ once: true }}
               className={`relative rounded-xl p-6 border ${
                 plan.popular
-                  ? "shadow-lg bg-gradient-to-tr from-purple-600 via-blue-600 to-green-600 text-white"
+                  ? "shadow-lg border-purple-200 bg-gradient-to-tr from-purple-600 via-blue-600 to-green-600 text-white"
                   : "border-gray-200 bg-gray-100 text-gray-800"
               } w-full`}
             >

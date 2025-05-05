@@ -40,7 +40,9 @@ const CallToAction = () => {
           className="mb-8"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-purple-500 mb-4">
-            Stop guessing.{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-purple-800 to-purple-900">
+              Stop guessing.
+            </span>{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               Start tracking.
             </span>
