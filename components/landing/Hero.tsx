@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Button from "../shared/Button";
+import { DISCORD_INVITE_LINK } from "@/constants";
 
 // Animation variants
 const containerVariants = {
@@ -57,7 +58,7 @@ const Hero = () => {
           className="mb-8 w-24 h-24 flex items-center justify-center rounded-2xl p-4"
         >
           <Image
-            src="/tp-logo-black.png"
+            src="/tp-logo-white.png"
             alt="Solana Tracker Pro"
             width={80}
             height={80}
@@ -71,7 +72,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-4xl md:text-6xl font-bold mb-4"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-purple-800 to-purple-900">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-400 to-purple-600">
             Track{" "}
           </span>
           <motion.span
@@ -80,7 +81,7 @@ const Hero = () => {
           >
             SOLANA
           </motion.span>{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-900 via-purple-900 to-black">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-purple-400 to-white">
             Wallets
           </span>
           <br />
@@ -100,7 +101,7 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <motion.div variants={itemVariants} className="flex gap-4 mb-12">
-          <Link href="/">
+          <Link href={DISCORD_INVITE_LINK} target="_blank">
             <Button>Start Tracking</Button>
           </Link>
           <Link href="/#features">

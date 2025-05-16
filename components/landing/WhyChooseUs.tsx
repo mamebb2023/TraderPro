@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import Button from "../shared/Button";
-import { why } from "@/constants";
+import { DISCORD_INVITE_LINK, why } from "@/constants";
+import Link from "next/link";
 
 const WhyChooseUs = () => {
   return (
     <section
       id="why-choose-us"
-      className="relative py-10 md:py-14 lg:py-20 bg-white overflow-hidden"
+      className="relative py-10 md:py-14 lg:py-20 bg-black overflow-hidden"
     >
-      {/* Floating elements */}
       <motion.div
         animate={{
           x: [0, 100, 0],
@@ -23,7 +23,6 @@ const WhyChooseUs = () => {
         }}
         className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/60 rounded-full filter blur-[90px]"
       />
-      {/* Floating elements */}
       <motion.div
         animate={{
           x: [0, -100, 0],
@@ -50,7 +49,7 @@ const WhyChooseUs = () => {
               Why Choose Us?
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
             The most comprehensive Solana wallet tracking solution
           </p>
         </motion.div>
@@ -69,22 +68,22 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               className="w-[250px]"
             >
-              <div className="h-full p-6 rounded-2xl bg-white border border-purple-200 hover:border-transparent shadow-sm hover:shadow-md transition-all">
+              <div className="h-full p-6 rounded-2xl bg-black shadow-sm hover:shadow-md transition-all">
                 <div
                   className={`w-14 h-14 ${feature.bgColor} ${feature.color} rounded-xl flex items-center justify-center mb-4`}
                 >
                   <i className={`bx ${feature.icon} text-2xl`} />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-300 mb-2">
                   {feature.title}
                   <br />
                   {feature.comingSoon && (
-                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                    <span className="text-xs bg-blue-900 text-blue-400 px-2 py-1 rounded-full">
                       Coming Soon
                     </span>
                   )}
                 </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-400">{feature.description}</p>
               </div>
             </motion.div>
           ))}
@@ -97,7 +96,12 @@ const WhyChooseUs = () => {
           viewport={{ once: true }}
           className="mt-16 flex justify-center"
         >
-          <Button>Join Our Discord →</Button>
+          <Link href={DISCORD_INVITE_LINK} target="_blank">
+            <Button className="flex-center gap-2">
+              <i className="bx bxl-discord-alt" />
+              Join Our Discord →
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

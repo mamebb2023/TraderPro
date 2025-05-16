@@ -6,14 +6,14 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-white">
+    <footer className="w-full border-t border-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Logo + Description */}
           <div className="md:col-span-4 flex items-center flex-grow">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/tp-logo-black.png"
+                src="/tp-logo-white.png"
                 alt="TrackerPro"
                 width={60}
                 height={60}
@@ -27,7 +27,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="md:col-span-3 md:col-start-6">
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -35,7 +35,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-gray-900 transition-colors"
+                    className="text-gray-400 hover:text-gray-900 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
 
           {/* Social Links - Right-aligned */}
           <div className="md:col-span-3 md:col-start-10">
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
               Connect
             </h3>
             <div className="flex gap-4">
@@ -70,12 +70,12 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-10 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-10 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            ©2024 - {new Date().getFullYear()} TrackerPro. All rights reserved.
+            ©2024 - {new Date().getFullYear()} TrackerPro
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <Link
+            {/* <Link
               href="/privacy-policy"
               className="text-gray-500 hover:text-gray-700 text-sm"
             >
@@ -86,7 +86,7 @@ const Footer = () => {
               className="text-gray-500 hover:text-gray-700 text-sm"
             >
               Terms and Conditions
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -105,8 +105,6 @@ function getSocialColor(platform: string) {
       return "bg-blue-500";
     case "github":
       return "bg-gray-700";
-    case "medium":
-      return "bg-green-500";
     default:
       return "bg-purple-500";
   }

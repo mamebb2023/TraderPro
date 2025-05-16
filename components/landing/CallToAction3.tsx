@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Button from "@/components/shared/Button";
+import { DISCORD_INVITE_LINK } from "@/constants";
+import Link from "next/link";
 
 const CallToAction = () => {
   return (
@@ -23,17 +26,17 @@ const CallToAction = () => {
           <h2 className="text-4xl font-extrabold mb-4 text-white">
             Stay Ahead with Real-Time Alerts
           </h2>
-          <p className="text-lg text-blue-900 mb-6">
+          <p className="text-lg text-blue-100 mb-6">
             Monitor wallets, get instant notifications, and never miss a move on
             the Solana blockchain.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition">
-              Get Started
-            </button>
-            <button className="border border-white text-white px-6 py-3 rounded-xl hover:bg-white/10 transition">
-              Learn More
-            </button>
+            <Link href={DISCORD_INVITE_LINK} target="_blank">
+              <Button>Get Started</Button>
+            </Link>
+            <Link href="/#features">
+              <Button variant="outline">Learn More</Button>
+            </Link>
           </div>
         </motion.div>
       </div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Button from "../shared/Button";
 import Link from "next/link";
+import { DISCORD_INVITE_LINK } from "@/constants";
 
 const CallToAction = () => {
   return (
@@ -43,7 +44,9 @@ const CallToAction = () => {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold text-white mb-6"
         >
-          Track{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-400 to-purple-600">
+            Track
+          </span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
             Any Solana Wallet
           </span>
@@ -69,7 +72,9 @@ const CallToAction = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button>
-            <Link href="/connect-wallet">Start Tracking Now</Link>
+            <Link href={DISCORD_INVITE_LINK} target="_blank">
+              Start Tracking Now
+            </Link>
           </Button>
           <Button variant="outline">
             <Link href="/#how-it-works">See Example Dashboard</Link>

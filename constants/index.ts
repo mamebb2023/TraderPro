@@ -1,3 +1,5 @@
+export const DISCORD_INVITE_LINK = "https://discord.gg/Fu9sTTN3"
+
 export const links = [
   { name: "Features", href: "/#features" },
   { name: "About", href: "/#why-choose-us"},
@@ -11,10 +13,10 @@ export const plans = [
     description: "Perfect for casual tracking",
     features: [
       "Track 1 wallet or token",
-      "Wallet info (Balance, Name if known)",
-      "Token details (Creation date, name, holders)",
+      "Wallet info (Balance, Name if know,...)",
+      "Token details (Creation Date, Name, Holders,...)",
     ],
-    cta: "Get Started",
+    cta: "Join Our Discord",
     popular: false,
   },
   {
@@ -26,10 +28,11 @@ export const plans = [
       "Track 50+ wallets",
       "Website + Discord tracking",
       "Trending token recommendations (24h stats)",
-      "Telegram bot channel (coming soon)",
+      "Twitter Tracker (coming soon)",
       "Priority support",
+      "2 days free trail"
     ],
-    cta: "Subscribe Now",
+    cta: "Track Now",
     popular: true,
   },
 ];
@@ -40,28 +43,33 @@ export const features = [
     description:
       "TrackerPro monitors multiple wallets with real-time updates on transactions",
     icon: "bx-wallet",
+    color: "#57C785"
   },
   {
     title: "Fast Notification Alerts",
     description:
       "Get instant alerts for important wallet activity with TrackerPro",
     icon: "bx-bell",
+    color: "#78E6FF"
   },
   {
     title: "Beautiful Notification UI",
     description: "Clean, intuitive interface for reciving alerts",
     icon: "bx-message-square",
+    color: "#E64C8E"
   },
   {
     title: "Get Any Wallet Info",
     description:
       "Access detailed information about any Solana coin, including token balances and transaction history",
     icon: "bx-info-circle",
+    color: "#FCB045"
   },
   {
     title: "Discord Integration",
     description: "Receive notifications in our TrackerPro Discord server",
     icon: "bxl-discord-alt",
+    color: " #787FFF"
   },
 ];
 
@@ -96,8 +104,8 @@ export const steps = [
 ];
 
 export const socialLinks = [
-  { name: "Telegram", icon: "bx bxl-twitter", href: "#" },
-  { name: "Discord", icon: "bx bxl-discord-alt", href: "#" },
+  { name: "Twitter", icon: "bx bxl-twitter", href: "https://x.com/" },
+  { name: "Discord", icon: "bx bxl-discord-alt", href: DISCORD_INVITE_LINK },
 ];
 
 export const why = [
@@ -106,35 +114,35 @@ export const why = [
     description: "Get premium tracking at a fraction of competitors' costs",
     icon: "bx bx-dollar-circle",
     color: "text-green-500",
-    bgColor: "bg-green-100",
+    bgColor: "bg-green-950",
   },
   {
     title: "Powerful Tracking",
     description: "Monitor wallets with our advanced Solana blockchain scanner",
     icon: "bx bx-radar",
     color: "text-blue-500",
-    bgColor: "bg-blue-100",
+    bgColor: "bg-blue-950",
   },
   {
     title: "Instant Alerts",
     description: "Real-time notifications for wallet activity",
     icon: "bx bx-bell",
     color: "text-purple-500",
-    bgColor: "bg-purple-100",
+    bgColor: "bg-purple-950",
   },
   {
     title: "Discord Integration",
     description: "Full control through our easy-to-use Discord server",
     icon: "bx bxl-discord-alt",
     color: "text-indigo-500",
-    bgColor: "bg-indigo-100",
+    bgColor: "bg-indigo-950",
   },
   {
     title: "Twitter Tracker",
     description: "Monitor influencer wallets from their tweets",
     icon: "bx bxl-twitter",
     color: "text-sky-500",
-    bgColor: "bg-sky-100",
+    bgColor: "bg-sky-950",
     comingSoon: true,
   },
 ];

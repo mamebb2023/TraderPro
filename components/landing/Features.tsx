@@ -7,7 +7,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative py-20 bg-gradient-to-b from-white to-purple-100"
+      className="relative py-20 bg-gradient-to-b from-black via-gray-950 to-black"
     >
       <motion.div
         animate={{
@@ -64,20 +64,22 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`relative z-5 p-5 w-80 bg-gradient-to-br from-purple-100 via-purple-5 to-white rounded-lg border-b border-r border-purple-400 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20`}
+              className={`relative z-5 p-5 w-80 rounded-lg border-b border-r transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20`}
+              style={{
+                background: `linear-gradient(to bottom right, ${feature.color}, transparent, transparent)`,
+                borderColor: feature.color,
+                color: feature.color,
+              }}
             >
               <div className="flex-center flex-col gap-1">
                 <div
-                  className={`flex-center border-t border-l border-purple-400 p-3 rounded-full bg-purple-600/10 text-purple-400`}
+                  className={`flex-center border-t border-l p-3 rounded-full`}
+                  style={{ borderColor: feature.color }}
                 >
                   <i className={`bx ${feature.icon} text-2xl`} />
                 </div>
-                <h3
-                  className={`text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-black`}
-                >
-                  {feature.title}
-                </h3>
-                <p className={`mt-2 text-gray-900 text-center`}>
+                <h3 className={`text-xl font-semibold`}>{feature.title}</h3>
+                <p className={`mt-2 text-gray-400 text-center`}>
                   {feature.description}
                 </p>
               </div>

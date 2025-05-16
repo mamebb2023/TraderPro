@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import Button from "../shared/Button";
+import Link from "next/link";
+import { DISCORD_INVITE_LINK } from "@/constants";
 
 const CallToAction = () => {
   return (
@@ -40,17 +42,16 @@ const CallToAction = () => {
           className="mb-8"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-purple-500 mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-purple-800 to-purple-900">
-              Stop guessing.
-            </span>{" "}
+           
+              Stop guessing.{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               Start tracking.
             </span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto">
             Join{" "}
-            <span className="text-purple-400 font-medium">1,200+ traders</span>{" "}
-            who track wallets smarter
+            <span className="text-purple-400 font-medium">PRO traders</span> who
+            trade and track wallets smarter
           </p>
         </motion.div>
 
@@ -61,12 +62,13 @@ const CallToAction = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button>Start Free Trial</Button>
           <Button variant="outline">
-            <span className="flex items-center gap-2">
-              <i className="bx bxl-discord-alt text-xl" />
-              Join Discord
-            </span>
+            <Link href={DISCORD_INVITE_LINK} target="_blank">
+              <span className="flex items-center gap-2">
+                <i className="bx bxl-discord-alt text-xl" />
+                Join Discord
+              </span>
+            </Link>
           </Button>
         </motion.div>
 

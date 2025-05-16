@@ -1,6 +1,6 @@
 "use client";
 
-import { links } from "@/constants";
+import { DISCORD_INVITE_LINK, links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
@@ -72,7 +72,7 @@ const Header = () => {
                 variants={linkVariants}
               >
                 <Image
-                  src="/tp-logo-black.png"
+                  src="/tp-logo-white.png"
                   alt="TrackerPro"
                   width={40}
                   height={40}
@@ -100,13 +100,15 @@ const Header = () => {
               ))}
             </div>
 
-            <Link href="/">
+            <Link href={DISCORD_INVITE_LINK} target="_blank">
               <Button>
                 <motion.span
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="flex-center gap-2"
                 >
-                  Get Started
+                  <i className="bx bxl-discord-alt" />
+                  Join Our Discord
                 </motion.span>
               </Button>
             </Link>

@@ -21,7 +21,7 @@ const Button = ({
 }: Props) => {
   const solidStyle =
     "text-white bg-gradient-to-tr from-purple-600 via-blue-500 to-green-500 shadow-lg hover:shadow-white-500/30 hover:scale-[1.02] active:scale-95";
-  const outlineStyle = `border-2 border-purple-500 text-purple-500 bg-transparent hover:bg-purple-500/10 hover:shadow-purple-500/20 hover:scale-[1.02] active:scale-95`;
+  const outlineStyle = `border-2 border-purple-400 text-purple-400 bg-transparent hover:bg-purple-400/10 hover:shadow-purple-400/20 hover:scale-[1.02] active:scale-95`;
   const ghostStyle = `text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 hover:shadow-lg hover:scale-[1.02] active:scale-95`;
 
   const variantStyles = {
