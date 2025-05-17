@@ -30,13 +30,15 @@ export default function RootLayout({
       <body className={`${font.className} antialiased`}>
         {/* Gradient background element */}
         <div className="fixed inset-0 -z-50">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950 to-blue-950" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950 to-blue-800 overflow-hidden" />
         </div>
 
+        <div className="overflow-y-auto">
         <ReactLenis root>
           {children}
           <Toaster />
         </ReactLenis>
+        </div>
       </body>
     </html>
   );

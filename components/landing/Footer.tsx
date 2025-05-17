@@ -6,28 +6,39 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Logo + Description */}
-          <div className="md:col-span-4 flex items-center flex-grow">
-            <div className="flex items-center gap-3 mb-4">
+    <section className="flex justify-center py-6 md:py-10 bg-black text-white">
+      <div
+        className="w-full max-w-6xl px-4 sm:px-6 md:px-8 rounded-3xl"
+        style={{
+          background:
+            "linear-gradient(to bottom right, #000, #000, #300030, #000030, rgb(0, 54, 7))",
+        }}
+      >
+        {/* Top Content */}
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 py-6">
+          {/* Logo & Description */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="flex items-center gap-3 mb-2">
               <Image
                 src="/tp-logo-white.png"
                 alt="TrackerPro"
-                width={60}
-                height={60}
+                width={50}
+                height={50}
                 className="flex-shrink-0"
               />
-              <span className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 text-transparent bg-clip-text">
+              <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
                 TrackerPro
-              </span>
+              </p>
             </div>
+            <p className="text-gray-400 text-sm max-w-xs">
+              Stay ahead of the Solana market with real-time wallet tracking and
+              instant alerts.
+            </p>
           </div>
 
           {/* Quick Links */}
-          <div className="md:col-span-3 md:col-start-6">
-            <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -35,7 +46,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-gray-900 transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -44,53 +55,46 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Links - Right-aligned */}
-          <div className="md:col-span-3 md:col-start-10">
-            <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
+          {/* Social Links */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">
               Connect
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
-                <div key={social.name}>
-                  <Link
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${getSocialColor(
-                      social.name
-                    )} text-white p-3 rounded-full flex items-center justify-center text-xl hover:shadow-lg transition-all`}
-                    aria-label={social.name}
-                  >
-                    <i className={social.icon} />
-                  </Link>
-                </div>
+                <Link
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${getSocialColor(
+                    social.name
+                  )} p-2 rounded-full flex items-center justify-center text-lg hover:scale-105 transition-transform`}
+                  aria-label={social.name}
+                >
+                  <i className={social.icon} />
+                </Link>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-10 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
-            ©2024 - {new Date().getFullYear()} TrackerPro
+        {/* Bottom Content */}
+        <div className="border-t border-gray-700 py-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left text-xs text-gray-500">
+          <p className="mb-2 sm:mb-0">
+            © {new Date().getFullYear()} TrackerPro
           </p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            {/* <Link
-              href="/privacy-policy"
-              className="text-gray-500 hover:text-gray-700 text-sm"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms-and-conditions"
-              className="text-gray-500 hover:text-gray-700 text-sm"
-            >
-              Terms and Conditions
-            </Link> */}
+          {/* Uncomment when ready */}
+          {/* 
+          <div className="flex gap-2">
+            <Link href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link>
+            <span>|</span>
+            <Link href="/terms-and-conditions" className="hover:text-gray-300">Terms</Link>
           </div>
+          */}
         </div>
       </div>
-    </footer>
+    </section>
   );
 };
 
@@ -98,15 +102,15 @@ const Footer = () => {
 function getSocialColor(platform: string) {
   switch (platform.toLowerCase()) {
     case "twitter":
-      return "bg-blue-400";
+      return "bg-blue-500 hover:bg-blue-600";
     case "discord":
-      return "bg-indigo-500";
+      return "bg-indigo-600 hover:bg-indigo-700";
     case "telegram":
-      return "bg-blue-500";
+      return "bg-blue-600 hover:bg-blue-700";
     case "github":
-      return "bg-gray-700";
+      return "bg-gray-800 hover:bg-gray-900";
     default:
-      return "bg-purple-500";
+      return "bg-purple-600 hover:bg-purple-700";
   }
 }
 

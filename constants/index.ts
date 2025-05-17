@@ -21,7 +21,7 @@ export const plans = [
   },
   {
     name: "Pro",
-    price: "$25",
+    price: "$20",
     description: "Best for active traders",
     features: [
       "Everything in Free",
@@ -43,33 +43,38 @@ export const features = [
     description:
       "TrackerPro monitors multiple wallets with real-time updates on transactions",
     icon: "bx-wallet",
-    color: "#57C785"
+    color: "#57C785",
+    bgcolor: "#1e442e"
   },
   {
     title: "Fast Notification Alerts",
     description:
       "Get instant alerts for important wallet activity with TrackerPro",
     icon: "bx-bell",
-    color: "#78E6FF"
+    color: "#78E6FF",
+    bgcolor: "#1f3a40"
   },
   {
     title: "Beautiful Notification UI",
     description: "Clean, intuitive interface for reciving alerts",
     icon: "bx-message-square",
-    color: "#E64C8E"
+    color: "#E64C8E",
+    bgcolor: "#3a1324"
   },
   {
     title: "Get Any Wallet Info",
     description:
       "Access detailed information about any Solana coin, including token balances and transaction history",
     icon: "bx-info-circle",
-    color: "#FCB045"
+    color: "#FCB045",
+    bgcolor: "#34240e"
   },
   {
     title: "Discord Integration",
     description: "Receive notifications in our TrackerPro Discord server",
     icon: "bxl-discord-alt",
-    color: " #787FFF"
+    color: " #787FFF",
+    bgcolor: "#14152a"
   },
 ];
 

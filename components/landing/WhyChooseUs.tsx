@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
           </p>
         </motion.div>
 
-        <div className="flex justify-center flex-wrap gap-5 relative z-10">
+        <div className="flex justify-center flex-wrap gap-3 md:gap-5 relative z-10">
           {why.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -68,7 +68,7 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               className="w-[250px]"
             >
-              <div className="h-full p-6 rounded-2xl bg-black shadow-sm hover:shadow-md transition-all">
+              <div className="h-full p-3 md:p-6 rounded-2xl bg-black shadow-sm hover:shadow-md transition-all">
                 <div
                   className={`w-14 h-14 ${feature.bgColor} ${feature.color} rounded-xl flex items-center justify-center mb-4`}
                 >

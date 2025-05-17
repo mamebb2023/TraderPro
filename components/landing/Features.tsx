@@ -21,7 +21,6 @@ const Features = () => {
         }}
         className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/60 rounded-full filter blur-[90px]"
       />
-      {/* Floating elements */}
       <motion.div
         animate={{
           x: [0, -100, 0],
@@ -64,10 +63,10 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`relative z-5 p-5 w-80 rounded-lg border-b border-r transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20`}
+              className={`relative z-5 p-5 w-80 rounded-lg border transition-all duration-300 hover:border-transparent`}
               style={{
-                background: `linear-gradient(to bottom right, ${feature.color}, transparent, transparent)`,
-                borderColor: feature.color,
+                background: `linear-gradient(to bottom right, black, ${feature.bgcolor}, black)`,
+                borderColor: feature.bgcolor,
                 color: feature.color,
               }}
             >

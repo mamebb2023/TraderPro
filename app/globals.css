@@ -34,7 +34,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 120, 0, 0.2);
   opacity: 0.3;
   border-radius: 4px;
 }
