@@ -76,20 +76,7 @@ const CallToAction = () => {
               Start Tracking Now
             </Link>
           </Button>
-          <Button variant="outline">
-            <Link href="/#how-it-works">See Example Dashboard</Link>
-          </Button>
         </motion.div>
-
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.4 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-10 text-sm text-gray-400"
-        >
-          No wallet connection needed - just paste any Solana address
-        </motion.div> */}
       </div>
     </section>
   );

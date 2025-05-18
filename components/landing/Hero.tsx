@@ -115,8 +115,8 @@ const Hero = () => {
           className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-center"
         >
           {[
-            { value: "10,000+", label: "Wallets Tracked" },
-            { value: "$250M+", label: "Assets Monitored" },
+            { value: "1,000+", label: "Wallets Tracked" },
+            { value: "$20M+", label: "Assets Monitored" },
             { value: "24/7", label: "Real-time Updates" },
           ].map((stat, index) => (
             <motion.div

@@ -6,18 +6,16 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="flex justify-center py-6 md:py-10 bg-black text-white">
+    <section className="flex justify-center py-5 md:py-7">
       <div
-        className="w-full max-w-6xl px-4 sm:px-6 md:px-8 rounded-3xl"
+        className="w-full max-w-[90%] px-4 sm:px-6 md:px-8 rounded-3xl py-4"
         style={{
           background:
             "linear-gradient(to bottom right, #000, #000, #300030, #000030, rgb(0, 54, 7))",
         }}
       >
-        {/* Top Content */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 py-6">
-          {/* Logo & Description */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex-grow flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-3 mb-2">
               <Image
                 src="/tp-logo-white.png"
@@ -37,7 +35,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex-grow flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">
               Quick Links
             </h3>
@@ -55,12 +53,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Links */}
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex-grow flex flex-col items-center md:items-start">
             <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">
               Connect
             </h3>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}
@@ -69,7 +66,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className={`${getSocialColor(
                     social.name
-                  )} p-2 rounded-full flex items-center justify-center text-lg hover:scale-105 transition-transform`}
+                  )} p-2 rounded-full flex items-center justify-center hover:scale-105 transition-transform`}
                   aria-label={social.name}
                 >
                   <i className={social.icon} />
@@ -79,7 +76,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Content */}
         <div className="border-t border-gray-700 py-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left text-xs text-gray-500">
           <p className="mb-2 sm:mb-0">
             © {new Date().getFullYear()} TrackerPro
