@@ -27,7 +27,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
           >
             Choose the plan that fits your tracking needs
           </motion.p>
@@ -44,7 +44,7 @@ const Pricing = () => {
               className={`relative rounded-xl p-6 w-full ${
                 plan.popular
                   ? "shadow-lg border-purple-200 bg-gradient-to-tr from-purple-600 via-blue-600 to-green-600 text-white"
-                  : "border border-gray-900 bg-gray-800 text-gray-100"
+                  : "border border-gray-800 bg-gray-900 text-gray-100"
               }`}
             >
               {plan.popular && (
@@ -54,7 +54,17 @@ const Pricing = () => {
               )}
 
               <div className="mb-6">
-                <h3 className="text-2xl font-bold">{plan.name}</h3>
+                <div className="font-bold flex justify-start items-center">
+                  {plan.name === "Free" ? (
+                    plan.name
+                  ) : (
+                    <div className="bg-white px-1 rounded-md">
+                    <span className="bg-clip-text bg-gradient-to-tr from-purple-500 via-blue-500 to-green-500 text-transparent">
+                      {plan.name}
+                    </span>
+                    </div>
+                  )}
+                </div>
                 <div className="flex items-end mt-2">
                   <span className="text-4xl font-bold">{plan.price}</span>
                   {plan.price !== "$0" && (
@@ -79,7 +89,7 @@ const Pricing = () => {
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <i className="bx bx-check"></i>
+                    <i className="bx bx-check text-purple-200"></i>
                     <span
                       className={plan.popular ? "text-white" : "text-gray-300"}
                     >

@@ -96,7 +96,7 @@ const Hero = () => {
           className="text-lg text-gray-400 max-w-2xl mb-8"
         >
           Monitor transactions, analyze portfolio performance, and get real-time
-          alerts for Solana wallets - all in one powerful dashboard.
+          alerts for wallet transactions - all in one powerful server.
         </motion.p>
 
         {/* CTA Buttons */}

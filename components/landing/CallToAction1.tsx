@@ -57,7 +57,7 @@ const CallToAction = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
         >
           Monitor transactions, token balances, and coin movements for any
           wallet address. Perfect for tracking competitors, influencers, or
@@ -71,11 +71,11 @@ const CallToAction = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button>
             <Link href={DISCORD_INVITE_LINK} target="_blank">
+          <Button>
               Start Tracking Now
-            </Link>
           </Button>
+            </Link>
         </motion.div>
       </div>
     </section>

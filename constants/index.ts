@@ -12,9 +12,9 @@ export const plans = [
     price: "$0",
     description: "Perfect for casual tracking",
     features: [
-      "Track 1 wallet or token",
-      "Wallet info (Balance, Name if know,...)",
-      "Token details (Creation Date, Name, Holders,...)",
+      "Track 1 wallet",
+      "Get Wallet Information",
+      "Scan Token Details",
     ],
     cta: "Join Our Discord",
     popular: false,
@@ -26,11 +26,11 @@ export const plans = [
     features: [
       "Everything in Free",
       "Track 50+ wallets",
-      "Website + Discord tracking",
-      "Trending token recommendations (24h stats)",
-      "Twitter Tracker (coming soon)",
+      "Discord tracking",
       "Priority support",
-      "2 days free trail"
+      "Trending token recommendations (24h stats)",
+      "2 days free trail",
+      "Twitter Tracker (coming soon)",
     ],
     cta: "Track Now",
     popular: true,
@@ -64,7 +64,7 @@ export const features = [
   {
     title: "Get Any Wallet Info",
     description:
-      "Access detailed information about any Solana coin, including token balances and transaction history",
+      "Access detailed information about any Solana token or wallet",
     icon: "bx-info-circle",
     color: "#FCB045",
     bgcolor: "#34240e"
